@@ -28,7 +28,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site)} />}
 
   <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="gavioli.net" href="/rss.xml" />
+  <link rel="alternate" type="application/rss+xml" title="gavioli.net" href={`${import.meta.env.BASE_URL}rss.xml`} />
 
   <!-- Fonts: solo self-hosted subset, no Google Fonts tracker -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -115,7 +115,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <div id="cookie-banner" role="dialog" aria-label="Informativa cookie">
     <p>
       Questo sito usa solo cookie tecnici strettamente necessari. Nessun tracker, nessuna pubblicità.
-      <a href="/privacy">Privacy policy</a>
+      <a href={`${import.meta.env.BASE_URL}privacy`}>Privacy policy</a>
     </p>
     <div style="display:flex;gap:8px;flex-shrink:0;">
       <button class="cookie-btn" id="cookie-reject">Solo necessari</button>

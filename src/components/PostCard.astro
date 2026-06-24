@@ -12,7 +12,7 @@ const { title, description, date, category, tags, slug } = Astro.props;
 const dateStr = date.toLocaleDateString('it-IT', { day: '2-digit', month: 'short', year: 'numeric' });
 ---
 
-<a href={`/blog/${slug}`} class="post-card">
+<a href={`${import.meta.env.BASE_URL}blog/${slug}`} class="post-card">
   <div class="post-header">
     <h2 class="post-title">{title}</h2>
     <time datetime={date.toISOString()} class="post-date">{dateStr}</time>

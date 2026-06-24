@@ -5,10 +5,11 @@ interface Props {
 }
 const { activeCategory = '', categories } = Astro.props;
 
+const base = import.meta.env.BASE_URL;
 const navLinks = [
-  { href: '/', label: '/ blog' },
-  { href: '/about', label: '/ chi sono' },
-  { href: '/servizi', label: '/ servizi' },
+  { href: base, label: '/ blog' },
+  { href: `${base}about`, label: '/ chi sono' },
+  { href: `${base}servizi`, label: '/ servizi' },
 ];
 ---
 
@@ -30,12 +31,12 @@ const navLinks = [
   <div class="cat-section">
     <p class="section-label">Categorie</p>
     <div class="cat-list">
-      <a href="/" class={`cat-row ${!activeCategory ? 'active' : ''}`}>
+      <a href={base} class={`cat-row ${!activeCategory ? 'active' : ''}`}>
         <span>tutti</span>
         <span class="cat-count">{categories.reduce((n, c) => n + c.count, 0)}</span>
       </a>
       {categories.map(cat => (
-        <a href={`/categoria/${cat.slug}`} class={`cat-row ${activeCategory === cat.slug ? 'active' : ''}`}>
+        <a href={`${base}categoria/${cat.slug}`} class={`cat-row ${activeCategory === cat.slug ? 'active' : ''}`}>
           <span>{cat.label}</span>
           <span class="cat-count">{cat.count}</span>
         </a>
@@ -46,7 +47,7 @@ const navLinks = [
   <div class="sidebar-footer">
     <div class="social-links">
       <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">gh</a>
-      <a href="/rss.xml" aria-label="Feed RSS">rss</a>
+      <a href={`${base}rss.xml`} aria-label="Feed RSS">rss</a>
       <a href="mailto:info@gavioli.net" aria-label="Email">@</a>
     </div>
     <button onclick="window.toggleTheme()" class="theme-toggle" aria-label="Cambia tema">
@@ -178,7 +179,18 @@ const navLinks = [
       overflow: visible;
     }
     .brand { margin-bottom: 0; }
-    .tagline, .cat-section, nav { display: none; }
+    .tagline, .cat-section { display: none; }
+    nav {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 0;
+    }
     .sidebar-footer { margin-top: 0; }
+  }
+
+  @media (max-width: 480px) {
+    .sidebar { gap: 12px 16px; }
+    nav { gap: 12px; }
   }
 </style>

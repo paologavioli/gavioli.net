@@ -30,7 +30,7 @@ const dateStr = post.data.date.toLocaleDateString('it-IT', { day: '2-digit', mon
       <article>
         <header class="post-header">
           <div class="post-meta">
-            <a href={`/categoria/${post.data.category}`} class="cat-badge">{post.data.category}</a>
+            <a href={`${import.meta.env.BASE_URL}categoria/${post.data.category}`} class="cat-badge">{post.data.category}</a>
             <time datetime={post.data.date.toISOString()} class="post-date">{dateStr}</time>
           </div>
           <h1 class="post-title">{post.data.title}</h1>
@@ -48,7 +48,7 @@ const dateStr = post.data.date.toLocaleDateString('it-IT', { day: '2-digit', mon
       </article>
 
       <div class="back-link">
-        <a href="/">← tutti gli scritti</a>
+        <a href={import.meta.env.BASE_URL}>← tutti gli scritti</a>
       </div>
 
       <Footer />
@@ -77,6 +77,7 @@ const dateStr = post.data.date.toLocaleDateString('it-IT', { day: '2-digit', mon
 
   .post-meta {
     display: flex; align-items: center; gap: 12px;
+    flex-wrap: wrap;
     margin-bottom: 16px;
   }
 
