@@ -8,6 +8,6 @@ tags: [test]
 
 Questo è un post di prova, serve solo a verificare che le immagini dentro i contenuti del blog vengano renderizzate correttamente, path compresi.
 
-![Immagine di test](./image/test-immagine.svg)
+![Immagine di test](./images/test-immagine.svg)
 
 Se vedi l'immagine sopra con il cerchio arancione "PG", il rendering funziona.
