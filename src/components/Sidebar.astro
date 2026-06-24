@@ -195,15 +195,14 @@ const navLinks = [
     .section-label { display: none; }
     .cat-list {
       flex-direction: row;
+      width: 100%;
       min-width: 0;
+      max-width: 100%;
       gap: 8px;
       overflow-x: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
       padding-bottom: 2px;
-      margin: 0 -20px;
-      padding-left: 20px;
-      padding-right: 20px;
     }
     .cat-list::-webkit-scrollbar { display: none; }
     .cat-row {
@@ -213,6 +212,7 @@ const navLinks = [
       border: 1px solid var(--line);
       white-space: nowrap;
     }
+    .cat-count { display: none; }
     .sidebar-footer {
       margin-top: 0;
       padding-top: 14px;
