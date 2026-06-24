@@ -1,0 +1,89 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  category: string;
+  tags: string[];
+  slug: string;
+}
+const { title, description, date, category, tags, slug } = Astro.props;
+
+const dateStr = date.toLocaleDateString('it-IT', { day: '2-digit', month: 'short', year: 'numeric' });
+---
+
+<a href={`/blog/${slug}`} class="post-card">
+  <div class="post-header">
+    <h2 class="post-title">{title}</h2>
+    <time datetime={date.toISOString()} class="post-date">{dateStr}</time>
+  </div>
+  <p class="post-desc">{description}</p>
+  <div class="post-meta">
+    <span class="cat-badge">{category}</span>
+    {tags.map(tag => <span class="tag">#{tag}</span>)}
+  </div>
+</a>
+
+<style>
+  .post-card {
+    display: block;
+    padding: 20px 16px;
+    margin: 0 -16px;
+    border-radius: 8px;
+    transition: background .15s ease;
+  }
+  .post-card:hover { background: var(--surface2); }
+
+  .post-header {
+    display: flex; align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  .post-title {
+    font-size: 18px; font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+  }
+
+  .post-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--faint);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .post-desc {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    max-width: 560px;
+  }
+
+  .post-meta {
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .cat-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 2px 8px;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--faint);
+  }
+
+  @media (max-width: 600px) {
+    .post-header { flex-direction: column; gap: 4px; }
+    .post-title { font-size: 16px; }
+  }
+</style>

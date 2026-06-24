@@ -1,0 +1,184 @@
+---
+interface Props {
+  activeCategory?: string;
+  categories: { slug: string; label: string; count: number }[];
+}
+const { activeCategory = '', categories } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: '/ blog' },
+  { href: '/about', label: '/ chi sono' },
+  { href: '/servizi', label: '/ servizi' },
+];
+---
+
+<aside class="sidebar">
+  <div class="brand">
+    <div class="avatar" aria-hidden="true">g</div>
+    <h1 class="site-title">gavioli<span class="accent">.net</span></h1>
+    <p class="tagline">consulente IT · networking</p>
+  </div>
+
+  <nav aria-label="Navigazione principale">
+    {navLinks.map(link => (
+      <a href={link.href} class={`nav-link ${Astro.url.pathname === link.href ? 'active' : ''}`}>
+        {link.label}
+      </a>
+    ))}
+  </nav>
+
+  <div class="cat-section">
+    <p class="section-label">Categorie</p>
+    <div class="cat-list">
+      <a href="/" class={`cat-row ${!activeCategory ? 'active' : ''}`}>
+        <span>tutti</span>
+        <span class="cat-count">{categories.reduce((n, c) => n + c.count, 0)}</span>
+      </a>
+      {categories.map(cat => (
+        <a href={`/categoria/${cat.slug}`} class={`cat-row ${activeCategory === cat.slug ? 'active' : ''}`}>
+          <span>{cat.label}</span>
+          <span class="cat-count">{cat.count}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="social-links">
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">gh</a>
+      <a href="/rss.xml" aria-label="Feed RSS">rss</a>
+      <a href="mailto:info@gavioli.net" aria-label="Email">@</a>
+    </div>
+    <button onclick="window.toggleTheme()" class="theme-toggle" aria-label="Cambia tema">
+      <span class="theme-dot" aria-hidden="true"></span>
+      <span data-theme-label>dark</span>
+    </button>
+  </div>
+</aside>
+
+<style>
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 52px 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .brand { margin-bottom: 40px; }
+
+  .avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500; font-size: 15px;
+    color: var(--bg);
+    margin-bottom: 18px;
+    user-select: none;
+  }
+
+  .site-title {
+    font-size: 19px; font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .accent { color: var(--accent); }
+
+  .tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  nav { display: flex; flex-direction: column; gap: 2px; margin-bottom: 32px; }
+
+  .nav-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    padding: 5px 0;
+    color: var(--muted);
+    transition: color .15s;
+  }
+  .nav-link:hover, .nav-link.active { color: var(--fg); }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 12px;
+  }
+
+  .cat-list { display: flex; flex-direction: column; gap: 1px; }
+
+  .cat-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 6px 10px; margin: 0 -10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: var(--muted);
+    transition: all .15s;
+    cursor: pointer;
+  }
+  .cat-row:hover { color: var(--fg); background: var(--surface2); }
+  .cat-row.active { color: var(--fg); background: var(--surface2); }
+
+  .cat-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--faint);
+  }
+
+  .sidebar-footer {
+    margin-top: auto;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .social-links {
+    display: flex; gap: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .social-links a:hover { color: var(--fg); }
+
+  .theme-toggle {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    background: transparent; border: none;
+    cursor: pointer; padding: 0;
+    transition: color .15s;
+  }
+  .theme-toggle:hover { color: var(--fg); }
+
+  .theme-dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .sidebar {
+      position: static;
+      height: auto;
+      padding: 24px 0 0;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      overflow: visible;
+    }
+    .brand { margin-bottom: 0; }
+    .tagline, .cat-section, nav { display: none; }
+    .sidebar-footer { margin-top: 0; }
+  }
+</style>

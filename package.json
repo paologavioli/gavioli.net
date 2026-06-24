@@ -1,0 +1,16 @@
+{
+  "name": "gavioli-net",
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.16.0",
+    "@astrojs/mdx": "^3.1.0",
+    "@astrojs/rss": "^4.0.7",
+    "shiki": "^1.22.0"
+  }
+}

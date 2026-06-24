@@ -1,0 +1,65 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <span class="footer-brand">gavioli<span class="accent">.net</span></span>
+      <span class="footer-copy">© {year} — Tutti i diritti riservati</span>
+    </div>
+    <nav class="footer-nav" aria-label="Link footer">
+      <a href="/privacy">Privacy policy</a>
+      <a href="/rss.xml">RSS</a>
+      <a href="/sitemap-index.xml">Sitemap</a>
+    </nav>
+  </div>
+  <p class="footer-notice">
+    Questo sito non traccia i visitatori. Nessun cookie di terze parti. Nessuna pubblicità.
+    Costruito con <a href="https://astro.build" target="_blank" rel="noopener">Astro</a>,
+    ospitato su <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>.
+  </p>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0 40px;
+    margin-top: 60px;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-left {
+    display: flex; align-items: center; gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+
+  .footer-brand { font-weight: 500; }
+  .accent { color: var(--accent); }
+  .footer-copy { color: var(--faint); }
+
+  .footer-nav {
+    display: flex; gap: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .footer-nav a:hover { color: var(--fg); }
+
+  .footer-notice {
+    font-size: 12px;
+    color: var(--faint);
+    line-height: 1.5;
+  }
+  .footer-notice a { color: var(--muted); text-decoration: underline; }
+  .footer-notice a:hover { color: var(--fg); }
+</style>

@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import PostCard from '../../components/PostCard.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const CATEGORIES = ['sysadmin', 'viaggi', 'note', 'hardware'];
+  return CATEGORIES.map(cat => ({ params: { categoria: cat } }));
+}
+
+const { categoria } = Astro.params;
+
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const filtered = allPosts.filter(p => p.data.category === categoria);
+
+const CATEGORIES = ['sysadmin', 'viaggi', 'note', 'hardware'];
+const categories = CATEGORIES.map(slug => ({
+  slug, label: slug,
+  count: allPosts.filter(p => p.data.category === slug).length,
+}));
+---
+
+<Base title={`${categoria} — gavioli.net`} description={`Post nella categoria ${categoria}`}>
+  <div class="layout">
+    <Sidebar categories={categories} activeCategory={categoria} />
+
+    <main>
+      <section class="posts-section">
+        <div class="posts-header">
+          <h1 class="posts-heading">{categoria}</h1>
+          <span class="posts-count">{String(filtered.length).padStart(2, '0')}</span>
+        </div>
+
+        <div class="posts-list">
+          {filtered.map(post => (
+            <PostCard
+              title={post.data.title}
+              description={post.data.description}
+              date={post.data.date}
+              category={post.data.category}
+              tags={post.data.tags}
+              slug={post.slug}
+            />
+          ))}
+
+          {filtered.length === 0 && (
+            <p class="empty">Nessun post in questa categoria ancora.</p>
+          )}
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  </div>
+</Base>
+
+<style>
+  .layout {
+    max-width: 1060px; margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: 248px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  main { min-width: 0; padding: 52px 0 80px; }
+  .posts-header {
+    display: flex; align-items: baseline;
+    justify-content: space-between; margin-bottom: 22px;
+  }
+  .posts-heading {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: .04em; text-transform: uppercase;
+    color: var(--faint);
+  }
+  .posts-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--faint);
+  }
+  .empty { color: var(--muted); font-size: 15px; padding: 20px 0; }
+
+  @media (max-width: 768px) {
+    .layout { grid-template-columns: 1fr; gap: 0; padding: 0 20px; }
+    main { padding: 24px 0 60px; }
+  }
+</style>

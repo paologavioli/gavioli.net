@@ -1,0 +1,122 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Sidebar from '../components/Sidebar.astro';
+import PostCard from '../components/PostCard.astro';
+import Footer from '../components/Footer.astro';
+
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const CATEGORIES = ['sysadmin', 'viaggi', 'note', 'hardware'];
+const categories = CATEGORIES.map(slug => ({
+  slug,
+  label: slug,
+  count: allPosts.filter(p => p.data.category === slug).length,
+}));
+---
+
+<Base title="gavioli.net — Consulente IT, networking e sysadmin">
+  <div class="layout">
+    <Sidebar categories={categories} />
+
+    <main>
+      <section class="hero">
+        <p class="hero-text">
+          Consulente informatico. Aiuto piccole aziende a far parlare tra loro
+          <span class="accent">reti</span>, server e persone. Qui scrivo di
+          networking, sistemi e qualche viaggio tra un intervento e l'altro.
+        </p>
+        <p class="hero-tags">consulenza · reti · linux · self-hosted</p>
+      </section>
+
+      <section class="posts-section">
+        <div class="posts-header">
+          <h2 class="posts-heading">Tutti gli scritti</h2>
+          <span class="posts-count">{String(allPosts.length).padStart(2, '0')}</span>
+        </div>
+
+        <div class="posts-list">
+          {allPosts.map(post => (
+            <PostCard
+              title={post.data.title}
+              description={post.data.description}
+              date={post.data.date}
+              category={post.data.category}
+              tags={post.data.tags}
+              slug={post.slug}
+            />
+          ))}
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  </div>
+</Base>
+
+<style>
+  .layout {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: 248px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  main { min-width: 0; padding: 52px 0 80px; }
+
+  .hero {
+    padding-bottom: 44px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 36px;
+  }
+
+  .hero-text {
+    font-size: 21px;
+    line-height: 1.5;
+    font-weight: 400;
+    max-width: 560px;
+    margin-bottom: 16px;
+  }
+
+  .accent { color: var(--accent); }
+
+  .hero-tags {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .posts-header {
+    display: flex; align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 22px;
+  }
+
+  .posts-heading {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  .posts-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--faint);
+  }
+
+  @media (max-width: 768px) {
+    .layout {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding: 0 20px;
+    }
+    main { padding: 24px 0 60px; }
+    .hero-text { font-size: 18px; }
+  }
+</style>

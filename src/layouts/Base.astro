@@ -1,0 +1,156 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description = 'Note di un consulente IT: networking, sysadmin, viaggi e hardware.', ogImage } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content={Astro.generator} />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="gavioli.net" />
+  {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site)} />}
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="gavioli.net" href="/rss.xml" />
+
+  <!-- Fonts: solo self-hosted subset, no Google Fonts tracker -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ---- CSS Variables ---- */
+    :root[data-theme="dark"] {
+      --bg: #1b1b1d;
+      --surface: #27272a;
+      --surface2: #161614;
+      --fg: #ededee;
+      --muted: #9a9a9e;
+      --faint: #69696d;
+      --line: #323236;
+      --accent: oklch(0.72 0.18 47);
+      --accent-dim: oklch(0.72 0.18 47 / 0.15);
+    }
+    :root[data-theme="light"] {
+      --bg: #f4f4f3;
+      --surface: #ffffff;
+      --surface2: #eaeae8;
+      --fg: #1c1c1e;
+      --muted: #5c5c5f;
+      --faint: #9a9a9d;
+      --line: #e4e4e2;
+      --accent: oklch(0.6 0.19 45);
+      --accent-dim: oklch(0.6 0.19 45 / 0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      transition: background .2s, color .2s;
+    }
+    :global(a) { text-decoration: none; color: inherit; }
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    /* ---- Cookie Banner ---- */
+    #cookie-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      z-index: 1000;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    #cookie-banner.hidden { display: none; }
+    #cookie-banner a { color: var(--accent); text-decoration: underline; }
+    .cookie-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      cursor: pointer;
+      background: transparent;
+      color: var(--fg);
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .cookie-btn:hover { background: var(--surface2); }
+    .cookie-btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+    .cookie-btn.primary:hover { opacity: .9; }
+  </style>
+</head>
+<body>
+
+  <slot />
+
+  <!-- Cookie Banner GDPR -->
+  <div id="cookie-banner" role="dialog" aria-label="Informativa cookie">
+    <p>
+      Questo sito usa solo cookie tecnici strettamente necessari. Nessun tracker, nessuna pubblicità.
+      <a href="/privacy">Privacy policy</a>
+    </p>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button class="cookie-btn" id="cookie-reject">Solo necessari</button>
+      <button class="cookie-btn primary" id="cookie-accept">Ho capito</button>
+    </div>
+  </div>
+
+  <script>
+    // Theme persistence
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
+    // Cookie banner
+    if (localStorage.getItem('cookie-consent')) {
+      document.getElementById('cookie-banner')?.classList.add('hidden');
+    }
+    document.getElementById('cookie-accept')?.addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'accepted');
+      document.getElementById('cookie-banner')?.classList.add('hidden');
+    });
+    document.getElementById('cookie-reject')?.addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'minimal');
+      document.getElementById('cookie-banner')?.classList.add('hidden');
+    });
+
+    // Theme toggle
+    window.toggleTheme = () => {
+      const html = document.documentElement;
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      document.querySelectorAll('[data-theme-label]').forEach(el => {
+        el.textContent = next;
+      });
+    };
+  </script>
+</body>
+</html>
