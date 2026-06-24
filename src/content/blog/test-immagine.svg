@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#1b1b1d"/>
+  <rect x="40" y="40" width="1120" height="595" rx="16" fill="none" stroke="#323236" stroke-width="2"/>
+  <circle cx="160" cy="160" r="48" fill="#ee7b3d"/>
+  <text x="160" y="176" font-family="monospace" font-size="34" fill="#1b1b1d" text-anchor="middle" font-weight="600">PG</text>
+  <text x="240" y="150" font-family="sans-serif" font-size="40" fill="#ededee" font-weight="700">Immagine di test</text>
+  <text x="240" y="190" font-family="monospace" font-size="20" fill="#9a9a9e">gavioli.net — post di prova</text>
+  <g stroke="#ee7b3d" stroke-width="3" fill="none">
+    <line x1="120" y1="320" x2="1080" y2="320"/>
+    <circle cx="120" cy="320" r="6" fill="#ee7b3d"/>
+    <circle cx="420" cy="320" r="6" fill="#ee7b3d"/>
+    <circle cx="720" cy="320" r="6" fill="#ee7b3d"/>
+    <circle cx="1080" cy="320" r="6" fill="#ee7b3d"/>
+  </g>
+  <text x="600" y="500" font-family="monospace" font-size="22" fill="#69696d" text-anchor="middle">SVG generata per verificare il rendering delle immagini nei post</text>
+</svg>

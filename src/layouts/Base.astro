@@ -27,9 +27,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:site_name" content="gavioli.net" />
   {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site)} />}
 
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="gavioli.net" href={`${import.meta.env.BASE_URL}rss.xml`} />
-
   <!-- Fonts: solo self-hosted subset, no Google Fonts tracker -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

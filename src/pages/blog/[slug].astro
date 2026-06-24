@@ -147,6 +147,14 @@ const dateStr = post.data.date.toLocaleDateString('it-IT', { day: '2-digit', mon
   }
   .prose :global(a:hover) { opacity: .8; }
   .prose :global(strong) { color: var(--fg); font-weight: 600; }
+  .prose :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    margin: 8px 0 24px;
+    display: block;
+  }
   .prose :global(em) { font-style: italic; }
   .prose :global(hr) {
     border: none;
