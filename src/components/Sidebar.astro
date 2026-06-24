@@ -179,12 +179,29 @@ const navLinks = [
       overflow: visible;
     }
     .brand { margin-bottom: 0; }
-    .tagline, .cat-section { display: none; }
+    .tagline { display: none; }
     nav {
       flex-direction: row;
       flex-wrap: wrap;
       gap: 16px;
       margin-bottom: 0;
+    }
+    .cat-section { margin-bottom: 0; }
+    .section-label { display: none; }
+    .cat-list {
+      flex-direction: row;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 2px;
+    }
+    .cat-list::-webkit-scrollbar { display: none; }
+    .cat-row {
+      flex-shrink: 0;
+      margin: 0;
+      border: 1px solid var(--line);
+      white-space: nowrap;
     }
     .sidebar-footer {
       margin-top: 0;
