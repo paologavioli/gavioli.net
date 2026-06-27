@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">
+  <rect width="72" height="72" rx="6" fill="#1b1b1d"/>
+  <!-- camper body -->
+  <rect x="8" y="32" width="54" height="20" rx="3" fill="none" stroke="#ee7b3d" stroke-width="1.5"/>
+  <!-- cab section -->
+  <path d="M8,32 L8,22 L28,22 L34,32" fill="none" stroke="#ee7b3d" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- cab window -->
+  <rect x="11" y="24" width="14" height="7" rx="1" fill="#ee7b3d" opacity="0.25"/>
+  <!-- side window -->
+  <rect x="38" y="36" width="14" height="10" rx="1" fill="#ee7b3d" opacity="0.25"/>
+  <!-- door line -->
+  <line x1="36" y1="32" x2="36" y2="52" stroke="#ee7b3d" stroke-width="1" opacity="0.4"/>
+  <!-- wheels -->
+  <circle cx="20" cy="52" r="7" fill="none" stroke="#ee7b3d" stroke-width="1.5"/>
+  <circle cx="20" cy="52" r="3" fill="#ee7b3d" opacity="0.4"/>
+  <circle cx="52" cy="52" r="7" fill="none" stroke="#ee7b3d" stroke-width="1.5"/>
+  <circle cx="52" cy="52" r="3" fill="#ee7b3d" opacity="0.4"/>
+</svg>

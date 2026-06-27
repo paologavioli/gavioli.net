@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">
+  <rect width="72" height="72" rx="6" fill="#1b1b1d"/>
+  <!-- Windows 4-square logo -->
+  <rect x="14" y="14" width="19" height="19" rx="1" fill="#ee7b3d"/>
+  <rect x="39" y="14" width="19" height="19" rx="1" fill="#ee7b3d" opacity="0.75"/>
+  <rect x="14" y="39" width="19" height="19" rx="1" fill="#ee7b3d" opacity="0.75"/>
+  <rect x="39" y="39" width="19" height="19" rx="1" fill="#ee7b3d" opacity="0.45"/>
+</svg>

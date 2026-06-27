@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">
+  <rect width="72" height="72" rx="6" fill="#1b1b1d"/>
+  <!-- terminal frame -->
+  <rect x="9" y="14" width="54" height="44" rx="4" fill="none" stroke="#ee7b3d" stroke-width="1.5" opacity="0.55"/>
+  <line x1="9" y1="25" x2="63" y2="25" stroke="#ee7b3d" stroke-width="1" opacity="0.35"/>
+  <circle cx="17" cy="19.5" r="2.2" fill="#ee7b3d" opacity="0.5"/>
+  <circle cx="23.5" cy="19.5" r="2.2" fill="#ee7b3d" opacity="0.3"/>
+  <circle cx="30" cy="19.5" r="2.2" fill="#ee7b3d" opacity="0.15"/>
+  <!-- > prompt and cursor -->
+  <text x="14" y="42" font-family="monospace" font-size="14" fill="#ee7b3d" font-weight="700">&gt; _</text>
+  <!-- second line faded -->
+  <line x1="15" y1="51" x2="45" y2="51" stroke="#ee7b3d" stroke-width="1.5" opacity="0.2"/>
+</svg>

@@ -4,7 +4,7 @@ description: "SIM locale, routing, VPN e perché mi porto dietro hardware di ret
 date: 2025-05-21
 category: viaggi
 tags: [giappone, travel, vpn, sim]
-image: /images/thumb-giappone.svg
+image: /images/thumb-viaggi.svg
 ---
 
 ## Il bagaglio tecnico

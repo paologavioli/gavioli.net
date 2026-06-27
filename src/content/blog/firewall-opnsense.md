@@ -4,7 +4,7 @@ description: "Mini-PC senza ventole, OPNsense e zero rumore sotto la scrivania. 
 date: 2025-06-03
 category: hardware
 tags: [firewall, opnsense, mini-pc]
-image: /images/thumb-firewall-opnsense.svg
+image: /images/thumb-firewall.svg
 ---
 
 ## Perché un firewall dedicato

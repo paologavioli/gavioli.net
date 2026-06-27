@@ -4,6 +4,7 @@ description: "Il mio cheatsheet personale: ip, tcpdump, mtr, ss, nmap e altri am
 date: 2025-05-09
 category: note
 tags: [cli, networking, cheatsheet, linux]
+image: /images/thumb-cli.svg
 ---
 
 ## Perché questo post

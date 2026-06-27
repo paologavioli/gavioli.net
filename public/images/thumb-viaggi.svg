@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">
+  <rect width="72" height="72" rx="6" fill="#1b1b1d"/>
+  <!-- compass circle -->
+  <circle cx="36" cy="36" r="20" fill="none" stroke="#ee7b3d" stroke-width="1.5" opacity="0.5"/>
+  <!-- N needle (orange) -->
+  <polygon points="36,18 39,36 33,36" fill="#ee7b3d"/>
+  <!-- S needle (faded) -->
+  <polygon points="36,54 39,36 33,36" fill="#ee7b3d" opacity="0.3"/>
+  <!-- E/W tick marks -->
+  <line x1="54" y1="36" x2="58" y2="36" stroke="#ee7b3d" stroke-width="1.5" opacity="0.5"/>
+  <line x1="14" y1="36" x2="18" y2="36" stroke="#ee7b3d" stroke-width="1.5" opacity="0.5"/>
+  <line x1="36" y1="14" x2="36" y2="18" stroke="#ee7b3d" stroke-width="1.5" opacity="0.5"/>
+  <line x1="36" y1="54" x2="36" y2="58" stroke="#ee7b3d" stroke-width="1.5" opacity="0.5"/>
+  <!-- center dot -->
+  <circle cx="36" cy="36" r="3" fill="#ee7b3d"/>
+</svg>

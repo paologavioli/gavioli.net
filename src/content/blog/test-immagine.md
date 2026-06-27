@@ -4,6 +4,7 @@ description: "Un post di test per verificare che il rendering delle immagini nel
 date: 2026-06-24
 category: note
 tags: [test]
+image: /images/thumb-software.svg
 ---
 
 Questo è un post di prova, serve solo a verificare che le immagini dentro i contenuti del blog vengano renderizzate correttamente, path compresi.
