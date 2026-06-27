@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">
+  <rect width="72" height="72" rx="6" fill="#1b1b1d"/>
+  <!-- network nodes -->
+  <circle cx="36" cy="20" r="7" fill="none" stroke="#ee7b3d" stroke-width="2"/>
+  <circle cx="16" cy="48" r="7" fill="none" stroke="#ee7b3d" stroke-width="2"/>
+  <circle cx="56" cy="48" r="7" fill="none" stroke="#ee7b3d" stroke-width="2"/>
+  <!-- lines -->
+  <line x1="36" y1="27" x2="20" y2="42" stroke="#ee7b3d" stroke-width="1.5" opacity="0.6"/>
+  <line x1="36" y1="27" x2="52" y2="42" stroke="#ee7b3d" stroke-width="1.5" opacity="0.6"/>
+  <!-- VLAN label -->
+  <text x="36" y="66" font-family="monospace" font-size="8" fill="#9a9a9e" text-anchor="middle">VLAN</text>
+</svg>

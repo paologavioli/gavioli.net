@@ -4,6 +4,7 @@ description: "Ufficio, ospiti e server su sottoreti separate: come isolo i repar
 date: 2025-06-12
 category: sysadmin
 tags: [vlan, mikrotik, networking]
+image: /images/thumb-vlan-mikrotik.svg
 ---
 
 ## Il problema

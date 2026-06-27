@@ -9,6 +9,7 @@ const blog = defineCollection({
     category: z.enum(['sysadmin', 'viaggi', 'note', 'hardware']),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    image: z.string().optional(),
   }),
 });
 

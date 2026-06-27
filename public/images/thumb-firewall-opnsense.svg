@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">
+  <rect width="72" height="72" rx="6" fill="#1b1b1d"/>
+  <!-- shield -->
+  <path d="M36 12 L54 20 L54 38 Q54 54 36 62 Q18 54 18 38 L18 20 Z" fill="none" stroke="#ee7b3d" stroke-width="2"/>
+  <!-- lock body -->
+  <rect x="29" y="36" width="14" height="11" rx="2" fill="#ee7b3d" opacity="0.8"/>
+  <!-- lock shackle -->
+  <path d="M31 36 L31 32 Q31 27 36 27 Q41 27 41 32 L41 36" fill="none" stroke="#ee7b3d" stroke-width="2"/>
+  <!-- label -->
+  <text x="36" y="70" font-family="monospace" font-size="7" fill="#9a9a9e" text-anchor="middle">FW</text>
+</svg>

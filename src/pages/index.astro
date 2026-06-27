@@ -23,9 +23,9 @@ const categories = CATEGORIES.map(slug => ({
     <main>
       <section class="hero">
         <p class="hero-text">
-          Consulente informatico. Aiuto piccole aziende a far parlare tra loro
-          <span class="accent">reti</span>, server e persone. Qui scrivo di
-          networking, sistemi e qualche viaggio tra un intervento e l'altro.
+          Consulente informatico. Vivo tra <span class="accent">reti</span>,
+          server e persone. Qui scrivo di networking, sistemi e qualche altra
+          passione.
         </p>
         <p class="hero-tags">consulenza · reti · linux · self-hosted</p>
       </section>
@@ -45,6 +45,7 @@ const categories = CATEGORIES.map(slug => ({
               category={post.data.category}
               tags={post.data.tags}
               slug={post.slug}
+              image={post.data.image}
             />
           ))}
         </div>
